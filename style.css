@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.montserrat-italian {
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  
+  .italiana-regular {
+      font-family: "Italiana", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Italiana", "Montserrat", sans-serif;
+
+}
+
+
+
+  
+:root {
+    --primary: #FF6B6B;
+    --secondary: #ff8c21;
+    --accent: #FFE66D;
+    --dark: #2C3E50;
+    --light: #F7F9F9;
+}
+
+body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    margin-top: 50px;
+    flex: 1;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    padding: 40px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer .footer-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer p, .footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-btn {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 8px 16px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.footer-btn:hover {
+    background: white;
+    color: black;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.footer-bottom {
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.footer-bottom a {
+    color: #ddd;
+}
+

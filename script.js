@@ -17,3 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Erro ao carregar idiomas", error));
 });
 
+window.addEventListener("scroll", function () {
+    let navbar = document.querySelector(".navbar-custom");
+    if (window.scrollY > 50) {
+        navbar.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+    } else {
+        navbar.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+    }
+});

@@ -103,9 +103,46 @@ body {
     color: #ddd;
 }
 
+.navbar-custom {
+    background-color: rgba(0, 0, 0, 0.8) !important; /* Fundo preto transparente */
+    backdrop-filter: blur(10px); /* Efeito de desfoque */
+    -webkit-backdrop-filter: blur(10px); /* Compatibilidade com Safari */
+
+    transition: background-color 0.3s ease-in-out; /* Suaviza transições */
+}
+
+.logo-nav {
+    height: 50px; /* Ajuste a altura do logo conforme necessário */
+    width: auto; /* Mantém a proporção da imagem */
+    vertical-align: middle;
+}
+
+.language-selector {
+    font-size: 12px; /* Reduz tamanho da fonte */
+    padding: 2px 2px; /* Ajusta espaço interno */
+    height: 40px; /* Define altura menor */
+    width: auto; /* Ajusta largura ao conteúdo */
+    border-radius: 5px; /* Bordas arredondadas para visual mais clean */
+    display: inline-block; /* Evita que estique demais */
+    background-color: black !important;
+    color: #fff !important;
+}
 
 
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa a tela inteira */
+    background: url('img/pizza_inicial.png') no-repeat center center/cover;
+}
 
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza o logo */
+    width: 500px; /* Ajuste o tamanho conforme necessário */
+}
 
 .restaurant-intro {
     max-width: auto;
@@ -119,7 +156,7 @@ body {
     font-size: 2rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #333;
+    color: #141414;
     margin-bottom: 1.5rem;
     line-height: 1.3;
 }
@@ -249,7 +286,7 @@ body {
   }
   
   .card:nth-child(2):before {
-    background-image: url(https://images.unsplash.com/photo-1533903345306-15d1c30952de?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+    background-image: url(img/img_card_2.png);
   }
   
   .card:nth-child(3):before {
@@ -360,3 +397,54 @@ body {
       transition-duration: 0s;
     }
   }
+
+
+  .menu-container {
+    padding-top: 100px; /* Espaço para a navbar fixa */
+    padding-bottom: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-header {
+    text-align: center;
+    margin-bottom: 40px;
+    
+}
+
+.menu-category {
+    margin-bottom: 30px;
+}
+
+.menu-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-name {
+    font-family: 'Italiana', serif;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.item-description {
+    color: #666;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.item-price {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    min-width: 70px;
+    text-align: right;
+    margin-left: 15px;
+}

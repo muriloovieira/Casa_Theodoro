@@ -27,9 +27,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html" data-lang="about">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="menu.html" data-lang="menu">Cardápio</a></li>
+                    
+                    <!-- Dropdown Menu for Cardápio -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="menu.html" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang="menu">
+                            Cardápio
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                            <li><a class="dropdown-item" href="menu.html#entradas" data-lang="menu_starters">Entradas</a></li>
+                            <li><a class="dropdown-item" href="menu.html#pratos-principais" data-lang="menu_mains">Pratos Principais</a></li>
+                            <li><a class="dropdown-item" href="menu.html#bebidas" data-lang="menu_drinks">Bebidas</a></li>
+                        </ul>
+                    </li>
+    
                     <li class="nav-item"><a class="nav-link" href="#contact" data-lang="contact">Contato</a></li>
                     <li class="nav-item"><a class="nav-link" href="https://orderonline.com" target="_blank" data-lang="order">Peça Online</a></li>
+                    
                     <li class="nav-item">
                         <select id="languageSwitcher" class="form-select form-select-sm language-selector">
                             <option value="pt">🇧🇷 PT</option>
@@ -41,6 +54,9 @@
             </div>
         </div>
     </nav>
+    <header class="hero2">
+        <img src="img/logo_png.png" alt="Logo da Pizzaria" class="logo2">
+    </header>
 
     <main class="menu-container">
         <div class="menu-header">
@@ -110,14 +126,15 @@ async function loadMenu() {
 
         data.forEach(row => {
             if (row.Categoria !== currentCategory) {
-                if (currentCategory !== '') {
-                    menuHTML += '</div>';
-                }
-                currentCategory = row.Categoria;
-                menuHTML += `
-                    <div class="menu-category">
-                        <h2 class="mb-4">${row.Categoria}</h2>
-                `;
+    if (currentCategory !== '') {
+        menuHTML += '</div></div>'; // Fecha menu-items e menu-category
+    }
+    currentCategory = row.Categoria;
+    menuHTML += `
+        <div class="menu-category">
+            <h2 class="mb-4">${row.Categoria}</h2>
+            <div class="menu-item">
+    `;
             }
 
             menuHTML += `
@@ -131,7 +148,7 @@ async function loadMenu() {
             `;
         });
 
-        menuHTML += '</div>';
+        menuHTML += '</div></div>'; // Fecha os últimos containers
         document.getElementById('menu-content').innerHTML = menuHTML;
 
     } catch (error) {

@@ -128,6 +128,31 @@ body {
     color: #fff !important;
 }
 
+/* Menu dropdown */
+.dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.85) !important; /* Fundo translúcido escuro */
+  backdrop-filter: blur(8px); /* Efeito de desfoque */
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 0;
+}
+
+/* Itens do dropdown */
+.dropdown-menu .dropdown-item {
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding: 8px 20px;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Hover nos itens do dropdown */
+.dropdown-menu .dropdown-item:hover {
+  background-color: #998575 !important;
+  color: #111 !important;
+}
+
+
+
 
 .hero {
     position: relative;
@@ -142,6 +167,22 @@ body {
     left: 50%;
     transform: translate(-50%, -50%); /* Centraliza o logo */
     width: 500px; /* Ajuste o tamanho conforme necessário */
+}
+
+.hero2 {
+  position: relative;
+  width: 100%;
+  height: 50vh; /* Ocupa a tela inteira */
+  background: url('img/pizza_inicial.png') no-repeat center center/cover;
+ 
+}
+
+.logo2 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza o logo */
+  width: 500px; /* Ajuste o tamanho conforme necessário */
 }
 
 .restaurant-intro {
@@ -408,21 +449,19 @@ body {
 
 .menu-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     
 }
 
 .menu-category {
-    margin-bottom: 30px;
+  text-align: center; /* Mantém os títulos centralizados */
+  margin-bottom: 30px;
 }
 
 .menu-item {
-    border-bottom: 1px solid #ddd;
-    padding: 15px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px; /* Ajusta o espaço entre os itens */
 }
 
 .item-details {

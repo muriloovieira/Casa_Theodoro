@@ -335,7 +335,7 @@ body {
   }
   
   .card:nth-child(4):before {
-    background-image: url(https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+    background-image: url(img/img_card_paodequeijo.png);
   }
   
   .content {
@@ -450,18 +450,18 @@ body {
 .menu-header {
     text-align: center;
     margin-bottom: 50px;
-    
 }
 
 .menu-category {
   text-align: center; /* Mantém os títulos centralizados */
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  
 }
 
 .menu-item {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 50px; /* Ajusta o espaço entre os itens */
+  gap: 20px; /* Ajusta o espaço entre os itens */
 }
 
 .item-details {

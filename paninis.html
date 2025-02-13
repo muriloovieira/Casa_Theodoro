@@ -30,13 +30,16 @@
                     
                     <!-- Dropdown Menu for Cardápio -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="menu.html" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang="menu">
+                        <a class="nav-link dropdown-toggle" href="pizzas.html" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang="menu">
                             Cardápio
                         </a>
+            
                         <ul class="dropdown-menu" aria-labelledby="menuDropdown">
-                            <li><a class="dropdown-item" href="menu.html#entradas" data-lang="menu_starters">Entradas</a></li>
-                            <li><a class="dropdown-item" href="menu.html#pratos-principais" data-lang="menu_mains">Pratos Principais</a></li>
-                            <li><a class="dropdown-item" href="menu.html#bebidas" data-lang="menu_drinks">Bebidas</a></li>
+                            <li><a class="dropdown-item" href="pizzas.html" data-lang="menu_pizzas">Pizzas e tortas</a></li>
+                            <li><a class="dropdown-item" href="pasta.html" data-lang="menu_mains">Massas, entradas, saladas e acompanhamentos</a></li>
+                            <li><a class="dropdown-item" href="menu.html#bebidas" data-lang="menu_drinks">Paninis, wraps e hambúrgueres</a></li>
+                            <li><a class="dropdown-item" href="menu.html#bebidas" data-lang="menu_drinks">Rolls</a></li>
+                            <li><a class="dropdown-item" href="menu.html#bebidas" data-lang="menu_drinks">Aperitivos</a></li>
                         </ul>
                     </li>
     
@@ -60,7 +63,7 @@
 
     <main class="menu-container">
         <div class="menu-header">
-            <h1 data-lang="menu-title">Cardápio</h1>
+            <h1 data-lang="menu-title">PANINIS, WRAPS AND BURGERS</h1>
         </div>
         <div id="menu-content" class="container">
             <!-- O conteúdo do menu será inserido aqui via JavaScript -->
@@ -99,7 +102,7 @@
 
     <script>
   // Substitua este URL pelo URL que você obteve ao publicar sua planilha
-const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSEa-Ko4zxgLb47FRr6-xmYDLUZXRGA7Etv8YnqiCKVF7jo6aeLRhpx4Fq6-iICwzROy0pWCo3Duss-/pub?output=csv';
+const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRyrjwMNaActkA1_IAaw2YlAK4nJDolv7cW88J3MQi6pl_-6vC7rX-Bqckp0ruyW6znjMi6NyYWLvkL/pub?output=csv';
 
 async function loadMenu() {
     try {
@@ -110,15 +113,11 @@ async function loadMenu() {
         const csvText = await response.text();
         
         // Converte CSV para array de objetos
-        const rows = csvText.split('\n').map(row => row.split(','));
-        const headers = rows[0];
-        const data = rows.slice(1).map(row => {
-            const item = {};
-            headers.forEach((header, index) => {
-                item[header.trim()] = row[index]?.trim() || '';
-            });
-            return item;
-        });
+        const data = Papa.parse(csvText, {
+        header: true,  // Usa a primeira linha como cabeçalhos
+        skipEmptyLines: true
+        }).data;
+       
 
         // Gera o HTML do menu
         let menuHTML = '';
@@ -133,6 +132,7 @@ async function loadMenu() {
     menuHTML += `
         <div class="menu-category">
             <h2 class="mb-4">${row.Categoria}</h2>
+            <br>
             <div class="menu-item">
     `;
             }
@@ -143,12 +143,12 @@ async function loadMenu() {
                         <h3 class="item-name">${row.Nome}</h3>
                         <p class="item-description">${row.Descrição}</p>
                     </div>
-                    <span class="item-price">$ ${parseFloat(row.Preço).toFixed(2)}</span>
+                    <span class="item-price">$ ${parseFloat(row['Preço Pequeno']).toFixed(2)}</span>
                 </div>
             `;
         });
 
-        menuHTML += '</div></div>'; // Fecha os últimos containers
+        menuHTML += '</div>';
         document.getElementById('menu-content').innerHTML = menuHTML;
 
     } catch (error) {
@@ -161,6 +161,7 @@ async function loadMenu() {
 // Carrega o menu quando a página for carregada
 document.addEventListener('DOMContentLoaded', loadMenu);
         </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tabletop@1.5.1/src/tabletop.min.js"></script>
     <script src="script.js"></script>
     <script src="languages.json"></script>

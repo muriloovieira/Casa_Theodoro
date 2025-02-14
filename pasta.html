@@ -37,10 +37,10 @@
                         <ul class="dropdown-menu" aria-labelledby="menuDropdown">
                             <li><a class="dropdown-item" href="pizzas.html" data-lang="menu_pizzas">Pizzas e tortas</a></li>
                             <li><a class="dropdown-item" href="pasta.html" data-lang="menu_mains">Massas, entradas, saladas e acompanhamentos</a></li>
-                            <li><a class="dropdown-item" href="menu.html#bebidas" data-lang="menu_drinks">Paninis, wraps e hambúrgueres</a></li>
-                            <li><a class="dropdown-item" href="menu.html#bebidas" data-lang="menu_drinks">Rolls</a></li>
-                            <li><a class="dropdown-item" href="menu.html#bebidas" data-lang="menu_drinks">Aperitivos</a></li>
-                        </ul>
+                            <li><a class="dropdown-item" href="paninis.html" data-lang="menu_drinks">Paninis, wraps e hambúrgueres</a></li>
+                            <li><a class="dropdown-item" href="rolls.html" data-lang="menu_drinks">Rolls</a></li>
+                            <li><a class="dropdown-item" href="appetizers.html" data-lang="menu_drinks">Aperitivos</a></li>
+                            </ul>
                     </li>
     
                     <li class="nav-item"><a class="nav-link" href="#contact" data-lang="contact">Contato</a></li>
@@ -137,14 +137,19 @@ async function loadMenu() {
     `;
             }
 
+            let precoPequeno = row['Preço Pequeno'] ? `$ ${parseFloat(row['Preço Pequeno']).toFixed(2)}` : '';
+            let precoGrande = row['Preço Grande'] ? `$ ${parseFloat(row['Preço Grande']).toFixed(2)}` : '';
+
+            let precos = [precoPequeno, precoGrande].filter(preco => preco).join(' / ');
+
             menuHTML += `
-                <div class="menu-item">
-                    <div class="item-details">
-                        <h3 class="item-name">${row.Nome}</h3>
-                        <p class="item-description">${row.Descrição}</p>
-                    </div>
-                    <span class="item-price">$ ${parseFloat(row['Preço Pequeno']).toFixed(2)}</span>
-                </div>
+                 <div class="menu-item">
+        <div class="item-details">
+            <h3 class="item-name">${row.Nome}</h3>
+            <p class="item-description">${row.Descrição}</p>
+        </div>
+        <span class="item-price">${precos}</span>
+    </div>
             `;
         });
 
